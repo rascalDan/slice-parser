@@ -1,6 +1,8 @@
 import package ;
 using gcc ;
 
+variant coverage : debug ;
+
 lib slicer-parser :
 	[ glob ice/cpp/src/Slice/*.cpp ]
 	:
@@ -8,6 +10,7 @@ lib slicer-parser :
 	<cxxstd>11
 	<warnings>off
 	<variant>release:<lto>on
+	<variant>coverage:<coverage>on
 	;
 
 package.install install : : :
