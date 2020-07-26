@@ -1,0 +1,18 @@
+import package ;
+using gcc ;
+
+lib slicer-parser :
+	[ glob ice/cpp/src/Slice/*.cpp ]
+	:
+	<include>ice/cpp/src
+	<cxxstd>11
+	<warnings>off
+	<variant>release:<lto>on
+	;
+
+package.install install : : :
+	slicer-parser
+	:
+	[ glob ice/cpp/src/Slice/*.h ]
+	;
+
