@@ -1,13 +1,21 @@
 import package ;
 using gcc ;
 
+lib Ice++11 : : : : <library>mcpp <library>pthread ;
+lib mcpp ;
+lib pthread ;
+
 lib slice-parser :
 	[ glob ice/cpp/src/Slice/*.cpp ]
+	ice/cpp/src/IceUtil/CtrlCHandler.cpp
+	ice/cpp/src/IceUtil/UtilException.cpp
 	:
 	<include>ice/cpp/src
+	<library>Ice++11
 	<cxxstd>11
 	<warnings>off
 	<variant>release:<lto>on
+	<linkflags>"-Wl,-z,defs,--warn-once"
 	;
 
 package.install install : : :
